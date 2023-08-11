@@ -26,7 +26,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <tesseract_demo/planning_server.h>
+#include <tesseract_raster_demo/planning_server.h>
 #include <tesseract_visualization/markers/toolpath_marker.h>
 
 static const std::string DEFAULT_PROFILE = "DEFAULT";

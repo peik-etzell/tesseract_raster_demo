@@ -1,5 +1,5 @@
-#ifndef TESSERACT_DEMO_PLANNING_SERVER_H
-#define TESSERACT_DEMO_PLANNING_SERVER_H
+#ifndef TESSERACT_RASTER_DEMO_PLANNING_SERVER_H
+#define TESSERACT_RASTER_DEMO_PLANNING_SERVER_H
 
 #include <tesseract_common/manipulator_info.h>
 #include <tesseract_environment/environment.h>

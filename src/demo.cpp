@@ -6,7 +6,7 @@
 #include <tesseract_common/manipulator_info.h>
 #include <tesseract_environment/environment.h>
 #include <tesseract_monitoring/environment_monitor.h>
-#include <tesseract_demo/planning_server.h>
+#include <tesseract_raster_demo/planning_server.h>
 
 // To use existing example.rviz config
 static const std::string MONITOR_NAMESPACE = "tesseract_ros_examples";
@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
 
-  auto node = std::make_shared<rclcpp::Node>("tesseract_demo_node");
+  auto node = std::make_shared<rclcpp::Node>("tesseract_raster_demo_node");
   std::thread spinner{ [node]() { rclcpp::spin(node); } };
 
   // ROS parameters

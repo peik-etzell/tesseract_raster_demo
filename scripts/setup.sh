@@ -14,7 +14,7 @@ sudo apt-get install gz-garden -y
 echo "
 Installing Tesseract and its source dependencies
 "
-vcs import < src/tesseract_demo/dependencies.repos src/ --debug
+vcs import < src/tesseract_raster_demo/dependencies.repos src/ --debug
 
 echo "
 Installing rosdep dependencies

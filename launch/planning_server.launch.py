@@ -18,8 +18,8 @@ def generate_launch_description():
         robot_files_dir / Path(f'{robot_name}.srdf'))
 
     demo_node = Node(
-        package="tesseract_demo",
-        executable="tesseract_demo_node",
+        package="tesseract_raster_demo",
+        executable="tesseract_raster_demo_node",
         # prefix=['gdbserver localhost:1234'],
         output="screen",
         parameters=[
