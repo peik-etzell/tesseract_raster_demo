@@ -82,7 +82,6 @@ bool run(tesseract_environment::Environment::Ptr env, tesseract_common::Manipula
     // Start instruction
     {
       tesseract_planning::CompositeInstruction start_comp(DEFAULT_PROFILE);
-      // start_comp.setDescription("Move to first raster");
       {
         tesseract_planning::MoveInstruction start_instr(
             zero_state_wp, tesseract_planning::MoveInstructionType::FREESPACE, DEFAULT_PROFILE);
@@ -167,32 +166,13 @@ bool run(tesseract_environment::Environment::Ptr env, tesseract_common::Manipula
       trajopt_plan_profile->cartesian_coeff(3) = 0;
       trajopt_plan_profile->cartesian_coeff(4) = 0;
       trajopt_plan_profile->cartesian_coeff(5) = 0;
-      // trajopt_plan_profile->term_type = trajopt::TermType::TT_COST;
       planner_profiles->addProfile<tesseract_planning::TrajOptPlanProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
                                                                            trajopt_plan_profile);
     }
-
-    {
-      auto trajopt_composite_profile = std::make_shared<tesseract_planning::TrajOptDefaultCompositeProfile>();
-      trajopt_composite_profile->collision_constraint_config.enabled = false;
-      trajopt_composite_profile->collision_cost_config.enabled = true;
-      trajopt_composite_profile->collision_cost_config.safety_margin = 0.025;
-      trajopt_composite_profile->collision_cost_config.type = trajopt::CollisionEvaluatorType::SINGLE_TIMESTEP;
-      trajopt_composite_profile->collision_cost_config.coeff = 20;
-      trajopt_composite_profile->smooth_velocities = true;
-      trajopt_composite_profile->smooth_accelerations = true;
-      trajopt_composite_profile->smooth_jerks = true;
-      planner_profiles->addProfile<tesseract_planning::TrajOptCompositeProfile>(
-          TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE, trajopt_composite_profile);
-    }
-
     {
       auto trajopt_solver_profile = std::make_shared<tesseract_planning::TrajOptDefaultSolverProfile>();
-      // trajopt_solver_profile->convex_solver = sco::ModelType::OSQP;
       trajopt_solver_profile->opt_info.num_threads = 0;
       trajopt_solver_profile->opt_info.max_iter = 200;
-      // trajopt_solver_profile->opt_info.min_approx_improve = 1e-3;
-      // trajopt_solver_profile->opt_info.min_trust_box_size = 1e-3;
       planner_profiles->addProfile<tesseract_planning::TrajOptSolverProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
                                                                              trajopt_solver_profile);
     }
