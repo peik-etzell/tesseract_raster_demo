@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>tesseract_demo</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="peik.etzell@gmail.com">peik</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>eigen3</depend>
+  <depend>tesseract_environment</depend>
+  <depend>tesseract_monitoring</depend>
+  <depend>tesseract_rosutils</depend>
+  <depend>tesseract_command_language</depend>
+  <depend>tesseract_motion_planners</depend>
+  <depend>tesseract_task_composer</depend>
+
+  <exec_depend>tesseract_ros_examples</exec_depend>
+  <exec_depend>tesseract_support</exec_depend>
+
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
