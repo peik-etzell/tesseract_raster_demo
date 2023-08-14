@@ -17,6 +17,7 @@
   <depend>tesseract_command_language</depend>
   <depend>tesseract_motion_planners</depend>
   <depend>tesseract_task_composer</depend>
+  <depend>tesseract_planning_server</depend>
 
   <exec_depend>tesseract_ros_examples</exec_depend>
   <exec_depend>tesseract_support</exec_depend>
