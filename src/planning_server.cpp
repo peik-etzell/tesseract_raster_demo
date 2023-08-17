@@ -159,23 +159,14 @@ bool run(tesseract_environment::Environment::Ptr env, tesseract_common::Manipula
 
   // TRAJOPT
   {
-    {
-      auto trajopt_plan_profile = std::make_shared<tesseract_planning::TrajOptDefaultPlanProfile>();
-      // Underconstrained orientation
-      trajopt_plan_profile->cartesian_coeff = Eigen::VectorXd::Ones(6);
-      trajopt_plan_profile->cartesian_coeff(3) = 0;
-      trajopt_plan_profile->cartesian_coeff(4) = 0;
-      trajopt_plan_profile->cartesian_coeff(5) = 0;
-      planner_profiles->addProfile<tesseract_planning::TrajOptPlanProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
-                                                                           trajopt_plan_profile);
-    }
-    {
-      auto trajopt_solver_profile = std::make_shared<tesseract_planning::TrajOptDefaultSolverProfile>();
-      trajopt_solver_profile->opt_info.num_threads = 0;
-      trajopt_solver_profile->opt_info.max_iter = 200;
-      planner_profiles->addProfile<tesseract_planning::TrajOptSolverProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
-                                                                             trajopt_solver_profile);
-    }
+    auto trajopt_plan_profile = std::make_shared<tesseract_planning::TrajOptDefaultPlanProfile>();
+    // Underconstrained orientation
+    trajopt_plan_profile->cartesian_coeff = Eigen::VectorXd::Ones(6);
+    trajopt_plan_profile->cartesian_coeff(3) = 0;
+    trajopt_plan_profile->cartesian_coeff(4) = 0;
+    trajopt_plan_profile->cartesian_coeff(5) = 0;
+    planner_profiles->addProfile<tesseract_planning::TrajOptPlanProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
+                                                                         trajopt_plan_profile);
   }
 
   // Taskflow executor
