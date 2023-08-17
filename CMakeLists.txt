@@ -31,6 +31,7 @@ target_link_libraries(
   tesseract::tesseract_motion_planners_core
   tesseract::tesseract_motion_planners_descartes
   tesseract::tesseract_motion_planners_trajopt
+  tesseract::tesseract_motion_planners_ompl
   console_bridge::console_bridge)
 target_include_directories(
   ${PROJECT_NAME}_planner

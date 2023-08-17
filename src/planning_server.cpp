@@ -14,6 +14,8 @@
 #include <tesseract_environment/environment.h>
 #include <tesseract_motion_planners/descartes/profile/descartes_default_plan_profile.h>
 #include <tesseract_motion_planners/descartes/profile/descartes_profile.h>
+#include <tesseract_motion_planners/ompl/profile/ompl_default_plan_profile.h>
+#include <tesseract_motion_planners/ompl/profile/ompl_profile.h>
 #include <tesseract_motion_planners/trajopt/profile/trajopt_default_composite_profile.h>
 #include <tesseract_motion_planners/trajopt/profile/trajopt_default_plan_profile.h>
 #include <tesseract_motion_planners/core/utils.h>  // toToolPath
@@ -33,6 +35,7 @@ static const std::string DEFAULT_PROFILE = "DEFAULT";
 
 static const std::string DESCARTES_DEFAULT_NAMESPACE = "DescartesMotionPlannerTask";
 static const std::string TRAJOPT_DEFAULT_NAMESPACE = "TrajOptMotionPlannerTask";
+static const std::string OMPL_DEFAULT_NAMESPACE = "OMPLMotionPlannerTask";
 
 static const int NUM_RASTERS = 8;
 
@@ -167,6 +170,14 @@ bool run(tesseract_environment::Environment::Ptr env, tesseract_common::Manipula
     trajopt_plan_profile->cartesian_coeff(5) = 0;
     planner_profiles->addProfile<tesseract_planning::TrajOptPlanProfile>(TRAJOPT_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
                                                                          trajopt_plan_profile);
+  }
+
+  // OMPL
+  {
+    auto ompl_profile = std::make_shared<tesseract_planning::OMPLDefaultPlanProfile>();
+    ompl_profile->simplify = true;
+    planner_profiles->addProfile<tesseract_planning::OMPLPlanProfile>(OMPL_DEFAULT_NAMESPACE, DEFAULT_PROFILE,
+                                                                      ompl_profile);
   }
 
   // Taskflow executor
